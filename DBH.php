@@ -12,7 +12,7 @@ if(file_exists(dirname(__FILE__).'/../config/settings.inc.php')){
 class DBH {
     protected $db_info = array("host"=>_DB_SERVER_, "user"=>_DB_USER_, "password"=>_DB_PASSWD_, 'database' => _DB_NAME_);
     private static $PS = array();
-    private $dbh;
+    private $dbh = NULL;
     
     public static $instance = NULL;
     
@@ -46,14 +46,14 @@ class DBH {
     }
     
     public function disconnect() {
-        unset($this->dbh);
+        $this->dbh = NULL;
     }
     
     public function insertId() {
         return $this->dbh->lastInsertId();
     }
     
-    public function _num_rows($result) {
+    public function numRows($result) {
         return $result->rowCount();
     }
     
