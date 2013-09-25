@@ -1,4 +1,4 @@
 simpleDB
 ========
 
-My mini framework
+Simple secure database interaction!
